@@ -6,7 +6,7 @@ export const ContactList = ({ contacts, handleDeleteContact }) => {
   return (
     <ListContainer>
       {contacts.map((contact) => (
-        <ListItem key={nanoid()}>
+        <ListItem key={contact.id}>
           {contact.name} : {contact.number}  
           <DeleteButton onClick={() => handleDeleteContact(contact.id)}>Видалити</DeleteButton>
         </ListItem>
