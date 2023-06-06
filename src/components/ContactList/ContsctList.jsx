@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { ListContainer, ListItem, DeleteButton } from './styledContactList';
 
 export const ContactList = ({ contacts, handleDeleteContact }) => {
