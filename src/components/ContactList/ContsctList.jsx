@@ -2,6 +2,7 @@ import React from 'react';
 import { ListContainer, ListItem, DeleteButton } from './styledContactList';
 
 export const ContactList = ({ contacts, handleDeleteContact }) => {
+  console.log('ContactList')
   return (
     <ListContainer>
       {contacts.map((contact) => (
