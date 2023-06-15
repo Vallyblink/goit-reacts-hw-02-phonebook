@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Formik, Form } from 'formik';
+import { useFormik, Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { FormContainer, Label, Input, ErrorMsg, Button } from './ContactFormStyles';
 
@@ -17,22 +16,19 @@ const schema = yup.object().shape({
     .required('Required'),
 });
 
-export class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+export default function ContactForm ({onSubmit}){
+  const formik = useFormik({
+    initialValues,
+    onSubmit: (values, { resetForm }) => {
+      onSubmit(values);
+      resetForm();
+  }});
+  console.log(formik)
 
-  onFormSubmit = (values, { resetForm }) => {
-    this.props.onSubmit(values);
-    resetForm();
-  };
-
-  render() {
     return (
       <Formik
         initialValues={initialValues}
-        onSubmit={this.onFormSubmit}
+        onSubmit={onSubmit}
         validationSchema={schema}
       >
         <Form>
@@ -65,4 +61,4 @@ export class ContactForm extends Component {
       </Formik>
     );
   }
-}
+
